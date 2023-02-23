@@ -1,6 +1,17 @@
-<ul>
+<div class="container py-5">
+<h1>Lists</h1>
+<div class="cards">
   <% @lists.each do |list| %>
-    <li><%= list.name %></li>
+        <div class="card-category" style="background-image: url('https://source.unsplash.com/random/?<%=list.name %>')">
+          <%= link_to list.name, list_path(list) %>
+        </div>
   <% end %>
-</ul>
-<h1>Hello noémie</h1>
+</div>
+
+
+
+<%= simple_form_for(@list) do |f| %>
+  <%= f.input :name %>
+  <%= f.submit class:"btn btn-primary" %>
+<% end %>
+</div>
