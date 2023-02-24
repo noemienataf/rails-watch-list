@@ -1,4 +1,17 @@
-<h2><%= @list.name %></h2>
+<%# <%= cl_image_tag(@list.photo.key),
+      width: 400, height: 300, crop: :fill %>
+    <%= console  %>
+
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path(@list.photo.key)%>);">
+  <div class="container">
+    <p><%= @list.name %></p>
+
+
+  </div>
+</div>
+
+
+
   <ul>
   <% @list.movies.each do |movie| %>
     <li>

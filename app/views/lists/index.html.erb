@@ -2,7 +2,11 @@
 <h1>Lists</h1>
 <div class="cards">
   <% @lists.each do |list| %>
-        <div class="card-category" style="background-image: url('https://source.unsplash.com/random/?<%=list.name %>')">
+  <% if list.photo.attached? %>
+        <div class="card-category" style="background-image: url(<%= cl_image_path(list.photo.key)%>)">
+    <% else %>
+    <div class="card-category" style="background-color: black">
+    <% end %>
           <%= link_to list.name, list_path(list) %>
         </div>
   <% end %>
@@ -12,6 +16,13 @@
 
 <%= simple_form_for(@list) do |f| %>
   <%= f.input :name %>
+    <%= f.input :photo, as: :file %>
   <%= f.submit class:"btn btn-primary" %>
 <% end %>
 </div>
+
+
+<%# style="background-image: url(<%= cl_image_path(list.photo.key)%>
+
+
+
